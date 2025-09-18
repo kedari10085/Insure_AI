@@ -1,14 +1,15 @@
 const { OpenAI } = require('openai');
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-
 // @desc    Handle chat messages
 exports.sendMessage = async (req, res) => {
   const { message, history } = req.body;
 
   try {
+    // Initialize OpenAI client inside the function
+    const openai = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY,
+    });
+
     // Construct the conversation history for the AI
     const messages = [
       { role: 'system', content: 'You are an intelligent insurance agent for Insure AI. Your goal is to collect information to provide an insurance quote. Be conversational and helpful.' },
