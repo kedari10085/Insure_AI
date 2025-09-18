@@ -6,6 +6,7 @@ exports.sendMessage = async (req, res) => {
 
   try {
     // Initialize OpenAI client inside the function
+    console.log('Checking for API Key:', process.env.OPENAI_API_KEY ? 'Key Found' : 'Key NOT Found');
     const openai = new OpenAI({
       apiKey: process.env.OPENAI_API_KEY,
     });
